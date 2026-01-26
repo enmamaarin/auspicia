@@ -1,6 +1,8 @@
 import { ArrowRight, Menu, X, ChevronDown, Shield, Cloud, Cpu, Database, TrendingUp, Users, CheckCircle, Mail, Phone, Linkedin, Twitter, Github } from "lucide-react"
 import { useState } from "react"
 
+import FloatingLines from '../components/FloatingLines';
+
 export default function AuspiciaLanding() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [servicesOpen, setServicesOpen] = useState(false)
@@ -21,13 +23,6 @@ export default function AuspiciaLanding() {
     "Retail & E-commerce"
   ]
 
-  // const stats = [
-  //   { value: "500+", label: "Clients Served" },
-  //   { value: "98%", label: "Satisfaction Rate" },
-  //   { value: "15+", label: "Years Experience" },
-  //   { value: "50+", label: "Expert Team" },
-  // ]
-
   const smoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault()
     const target = document.querySelector(targetId)
@@ -41,8 +36,19 @@ export default function AuspiciaLanding() {
 
   return (
     <div className="min-h-screen">
+      <div className="fixed inset-0 w-full h-full -z-10">
+      <FloatingLines 
+        enabledWaves={["top","middle","bottom"]}
+        lineCount={5}
+        lineDistance={5}
+        bendRadius={5}
+        bendStrength={-0.5}
+        interactive={true}
+        parallax={true}
+      />
+    </div>
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-xl border-b border-purple-100 z-50 shadow-sm">
+      <nav className="fixed top-0 w-full bg-black/80 backdrop-blur-xl border-purple-900 z-50 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
@@ -56,7 +62,7 @@ export default function AuspiciaLanding() {
                   A
                 </a>
               </div>
-              <span className="text-2xl font-bold bg-gradient-to-r from-purple-700 to-violet-600 bg-clip-text text-transparent">
+              <span className="text-purple-400 text-2xl font-bold bg-gradient-to-r from-purple-700 to-violet-600 bg-clip-text text-transparent">
                 <a 
                   href="#home" 
                   onClick={(e) => smoothScroll(e, '#home')}
@@ -69,7 +75,7 @@ export default function AuspiciaLanding() {
             <div className="hidden lg:flex items-center gap-8">
               {/* Services Dropdown */}
               <div className="relative group">
-                <button className="flex items-center gap-1 text-gray-700 hover:text-purple-600 font-medium transition-colors">
+                <button className="flex items-center gap-1 text-purple-300 hover:text-purple-600 font-medium transition-colors">
                   Services
                   <ChevronDown className="h-4 w-4" />
                 </button>
@@ -94,7 +100,7 @@ export default function AuspiciaLanding() {
               </div>
               {/* Industries Dropdown */}
               <div className="relative group">
-                <button className="flex items-center gap-1 text-gray-700 hover:text-purple-600 font-medium transition-colors">
+                <button className="flex items-center gap-1 text-purple-300  hover:text-purple-600 font-medium transition-colors">
                   Industries
                   <ChevronDown className="h-4 w-4" />
                 </button>
@@ -114,7 +120,7 @@ export default function AuspiciaLanding() {
               <a 
                 href="#about" 
                 onClick={(e) => smoothScroll(e, '#about')}
-                className="text-gray-700 hover:text-purple-600 font-medium transition-colors"
+                className="text-purple-300 hover:text-purple-600 font-medium transition-colors"
               >
                 About Us
               </a>
@@ -141,7 +147,7 @@ export default function AuspiciaLanding() {
           </div>
           {/* Mobile Menu */}
           {mobileMenuOpen && (
-            <div className="lg:hidden py-6 border-t border-purple-100">
+            <div className="lg:hidden py-6 border-t border-purple-900">
               <div className="space-y-4">
                 <div>
                   <button
@@ -216,14 +222,14 @@ export default function AuspiciaLanding() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left Content */}
             <div className="space-y-8">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-100 rounded-full text-purple-700 font-semibold text-sm">
+              <div className="inline-flex items-center gap-2 px-4 py-2 backdrop-blur-xl bg-gradient-to-r from-purple-600 to-violet-600 rounded-full text-purple-200 font-semibold text-sm shadow-lg">
                 <TrendingUp className="h-4 w-4" />
                 Trusted by Fortune 500 Companies
               </div>
-              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold bg-gradient-to-r from-purple-900 via-violet-700 to-purple-900 bg-clip-text text-transparent leading-tight">
+              <h1 className="p-3 text-4xl sm:text-5xl lg:text-7xl font-bold bg-gradient-to-r from-purple-200 via-violet-300 to-purple-400 bg-clip-text text-transparent leading-tight">
                 Enterprise IT Solutions for the Digital Age
               </h1>
-              <p className="text-lg sm:text-xl text-gray-600 leading-relaxed">
+              <p className="text-lg sm:text-xl text-purple-100 leading-relaxed">
                 Transform your business with cutting-edge technology consulting. We deliver scalable solutions that drive growth and innovation.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
@@ -243,17 +249,6 @@ export default function AuspiciaLanding() {
                   Explore Services
                 </a>
               </div>
-              {/* Stats */}
-              {/* <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-8">
-                {stats.map((stat) => (
-                  <div key={stat.label} className="text-center">
-                    <div className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-violet-600 bg-clip-text text-transparent">
-                      {stat.value}
-                    </div>
-                    <div className="text-sm text-gray-600 mt-1">{stat.label}</div>
-                  </div>
-                ))}
-              </div> */}
             </div>
             {/* Right Visual */}
             <div className="relative">
@@ -261,21 +256,21 @@ export default function AuspiciaLanding() {
                 {/* Hexagon Background */}
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-600 via-violet-600 to-purple-800 rounded-3xl rotate-6 opacity-10 blur-3xl" />
                 {/* Main Card */}
-                <div className="relative bg-white/80 backdrop-blur-xl rounded-3xl border border-purple-200 shadow-2xl p-8 space-y-6">
-                  <div className="flex items-center gap-4">
+                <div className="mt-20 relative backdrop-blur-xl rounded-3xl border-2 border-purple-900 shadow-2xl p-8 space-y-6">
+                  <div className="flex items-center gap-4 ">
                     <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-purple-600 to-violet-600 flex items-center justify-center text-white text-3xl shadow-lg">
                       <Shield className="h-8 w-8" />
                     </div>
                     <div>
-                      <div className="font-bold text-xl text-gray-900">Auspicia Platform</div>
+                      <div className="font-bold text-xl text-purple-300">Auspicia Platform</div>
                       <div className="text-purple-600 font-medium">Enterprise IT Infrastructure</div>
                     </div>
                   </div>
-                  <div className="space-y-4">
+                  <div className="space-y-4 ">
                     {services.map((service, idx) => (
                       <div
                         key={service.name}
-                        className="flex items-center gap-4 p-4 rounded-xl border border-purple-100 hover:shadow-lg transition-all duration-300 group cursor-pointer"
+                        className="flex items-center gap-4 p-4 rounded-xl border-2 border-2 border-purple-500 hover:shadow-lg transition-all duration-300 group cursor-pointer"
                         style={{ animationDelay: `${idx * 100}ms` }}
                       >
                         <service.icon className="h-6 w-6 text-purple-600 group-hover:scale-110 transition-transform" />
@@ -311,7 +306,7 @@ export default function AuspiciaLanding() {
             {services.map((service) => (
               <div
                 key={service.name}
-                className="group p-8 rounded-2xl bg-gradient-to-br from-purple-50 to-violet-50 border border-purple-100 hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 hover:-translate-y-2"
+                className="group p-8 rounded-2xl bg-gradient-to-br from-purple-50 to-violet-50 border-2 border-purple-900 hover:shadow-2xl hover:shadow-purple-500/20 transition-all duration-300 hover:-translate-y-2"
               >
                 <div className="h-14 w-14 rounded-xl bg-gradient-to-br from-purple-600 to-violet-600 flex items-center justify-center text-white mb-6 group-hover:scale-110 transition-transform">
                   <service.icon className="h-7 w-7" />
@@ -359,7 +354,7 @@ export default function AuspiciaLanding() {
               ].map((expertise) => (
                 <div
                   key={expertise}
-                  className="p-6 rounded-xl bg-gradient-to-br from-purple-50 to-violet-50 border border-purple-100 hover:shadow-lg transition-all"
+                  className="p-6 rounded-xl bg-gradient-to-br from-purple-50 to-violet-50 border-2 border-purple-900 hover:shadow-lg transition-all"
                 >
                   <CheckCircle className="h-6 w-6 text-purple-600 mb-3" />
                   <div className="font-semibold text-gray-900">{expertise}</div>
@@ -421,7 +416,7 @@ export default function AuspiciaLanding() {
                 <li><a href="#services" onClick={(e) => smoothScroll(e, '#services')} className="hover:text-purple-400 transition-colors">Cloud Solutions</a></li>
                 <li><a href="#services" onClick={(e) => smoothScroll(e, '#services')} className="hover:text-purple-400 transition-colors">Cybersecurity</a></li>
                 <li><a href="#services" onClick={(e) => smoothScroll(e, '#services')} className="hover:text-purple-400 transition-colors">Digital Transformation</a></li>
-                <li><a href="#services" onClick={(e) => smoothScroll(e, '#services')} className="hover:text-purple-400 transition-colors">Managed IT</a></li>
+                <li><a href="#services" onClick={(e) => smoothScroll(e, '#services')} className="hover:text-purple-400 transition-colors text-purple-200">Managed IT</a></li>
               </ul>
             </div>
             {/* Company Links */}
